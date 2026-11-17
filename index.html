@@ -1,0 +1,229 @@
+<!doctype html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>מה זה קל (MaZeKal) — העברת חשבונות במעבר דירה | Moving-home utility transfers</title>
+<meta name="description" content="מה זה קל מעבירה עבורכם את חשבונות החשמל, המים, הגז והארנונה במעבר דירה — בטופס אחד, אונליין, בלי בירוקרטיה.">
+<meta property="og:title" content="MaZeKal — we transfer your utility accounts when you move">
+<meta property="og:description" content="Electricity, water, gas and municipal tax transferred for you when you move home in Israel — one online form, no bureaucracy.">
+<meta property="og:image" content="logo.png">
+<meta property="og:type" content="website">
+<link rel="icon" href="logo.png">
+<link rel="canonical" href="https://mazekal.co.il/">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Heebo:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --blue: #2f7fd0;
+    --orange: #e8741c;
+    --green: #15803d;
+    --ink: #142033;
+    --muted: #55627a;
+    --line: #e2e9f3;
+    --soft: #f1f6fd;
+    --bg: #ffffff;
+    --card: #ffffff;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --ink: #e9f0fb; --muted: #a9b6cc; --line: #2b3a52; --soft: #15223a;
+      --bg: #0e1728; --card: #142035; --blue: #6fb0f2; --orange: #f39a4e; --green: #3fbf6f;
+    }
+  }
+  * { box-sizing: border-box; }
+  html { scroll-behavior: smooth; }
+  body { margin: 0; background: var(--bg); color: var(--ink); font-family: "Heebo", system-ui, -apple-system, "Segoe UI", Arial, sans-serif; line-height: 1.65; }
+  a { color: var(--blue); }
+  .wrap { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+  header.top { position: sticky; top: 0; z-index: 10; background: color-mix(in srgb, var(--bg) 92%, transparent); backdrop-filter: blur(8px); border-bottom: 1px solid var(--line); }
+  header.top .wrap { display: flex; align-items: center; justify-content: space-between; gap: 12px; min-height: 64px; }
+  .brand { display: flex; align-items: center; gap: 10px; text-decoration: none; color: var(--ink); font-weight: 800; }
+  .brand img { height: 56px; width: 56px; transform: scale(1.35); display: block; background: #fff; border-radius: 10px; }
+  .lang { display: inline-flex; border: 1px solid var(--line); border-radius: 999px; overflow: hidden; }
+  .lang button { border: 0; background: transparent; color: var(--muted); font: inherit; font-weight: 600; padding: 8px 14px; min-height: 40px; cursor: pointer; }
+  .lang button[aria-pressed="true"] { background: var(--blue); color: #fff; }
+  .hero { padding: 64px 0 48px; background: radial-gradient(1200px 400px at 50% -10%, var(--soft), transparent); text-align: center; }
+  .eyebrow { display: inline-block; font-weight: 700; color: var(--orange); background: color-mix(in srgb, var(--orange) 12%, transparent); border-radius: 999px; padding: 4px 14px; font-size: 14px; }
+  h1 { font-size: clamp(30px, 5vw, 48px); line-height: 1.15; margin: 16px 0 12px; font-weight: 800; }
+  h1 em { font-style: normal; color: var(--green); }
+  .lead { font-size: clamp(17px, 2.2vw, 20px); color: var(--muted); max-width: 720px; margin: 0 auto 28px; }
+  .cta-row { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
+  .btn { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; padding: 0 24px; border-radius: 12px; font-weight: 700; text-decoration: none; }
+  .btn.primary { background: var(--green); color: #fff; }
+  .btn.ghost { border: 2px solid var(--blue); color: var(--blue); }
+  .stats { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 12px; margin-top: 36px; }
+  .stat { border: 1px solid var(--line); background: var(--card); border-radius: 14px; padding: 14px; }
+  .stat b { display: block; direction: ltr; unicode-bidi: isolate; font-size: 26px; color: var(--blue); }
+  .stat span { color: var(--muted); font-size: 14px; }
+  section { padding: 56px 0; }
+  section.alt { background: var(--soft); }
+  h2 { font-size: clamp(24px, 3.4vw, 34px); margin: 0 0 8px; text-align: center; }
+  .sub { text-align: center; color: var(--muted); margin: 0 auto 32px; max-width: 680px; }
+  .grid { display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .card { background: var(--card); border: 1px solid var(--line); border-radius: 16px; padding: 20px; }
+  .card h3 { margin: 6px 0 6px; font-size: 19px; }
+  .card p { margin: 0; color: var(--muted); }
+  .icon { font-size: 26px; }
+  .num { width: 36px; height: 36px; border-radius: 50%; background: var(--blue); color: #fff; display: grid; place-items: center; font-weight: 800; }
+  .product { display: grid; grid-template-columns: 1fr; gap: 16px; align-items: center; background: var(--card); border: 2px solid var(--blue); border-radius: 20px; padding: 28px; }
+  .product h3 { margin: 0 0 6px; font-size: 22px; }
+  .product p { margin: 0 0 16px; color: var(--muted); }
+  footer { border-top: 1px solid var(--line); padding: 28px 0; color: var(--muted); font-size: 14px; }
+  footer .wrap { display: flex; flex-wrap: wrap; gap: 12px 24px; justify-content: space-between; align-items: center; }
+  html[lang="he"] [data-lang="en"], html[lang="en"] [data-lang="he"] { display: none !important; }
+  @media (max-width: 520px) { .btn { width: 100%; } .hero { padding-top: 40px; } }
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="brand" href="https://mazekal.co.il"><img src="logo.png" alt="" width="56" height="56"><span data-lang="he">מה זה קל</span><span data-lang="en">MaZeKal</span></a>
+    <div class="lang" role="group" aria-label="Language / שפה">
+      <button type="button" data-set-lang="he" aria-pressed="true">עברית</button>
+      <button type="button" data-set-lang="en" aria-pressed="false">English</button>
+    </div>
+  </div>
+</header>
+
+<main>
+  <section class="hero">
+    <div class="wrap">
+      <span class="eyebrow" data-lang="he">עוברים דירה?</span>
+      <span class="eyebrow" data-lang="en">Moving home in Israel?</span>
+      <h1 data-lang="he">סוגרים לכם <em>הכל</em> במעבר דירה</h1>
+      <h1 data-lang="en">We take care of <em>everything</em> when you move</h1>
+      <p class="lead" data-lang="he">מה זה קל מעבירה עבורכם את חשבונות החשמל, המים, הגז והארנונה ומעדכנת את הכתובת שלכם — בטופס אחד, אונליין, בלי טפסים, בלי תורים ובלי המתנה לנציגים.</p>
+      <p class="lead" data-lang="en">MaZeKal transfers your electricity, water, gas and municipal tax accounts and updates your address — with one online form. No paperwork, no queues, no waiting on hold.</p>
+      <div class="cta-row">
+        <a class="btn primary" href="https://mazekal.co.il"><span data-lang="he">תעשו לי את זה!</span><span data-lang="en">Do it for me</span></a>
+        <a class="btn ghost" href="https://social.mazekal.co.il/whatsapp"><span data-lang="he">דברו איתנו בוואטסאפ</span><span data-lang="en">Chat on WhatsApp</span></a>
+      </div>
+      <div class="stats">
+        <div class="stat"><b>30,000+</b><span data-lang="he">לקוחות בחרו במה זה קל</span><span data-lang="en">customers chose MaZeKal</span></div>
+        <div class="stat"><b>~10</b><span data-lang="he">שעות נחסכות בממוצע</span><span data-lang="en">hours saved on average</span></div>
+        <div class="stat"><b>~5</b><span data-lang="he">דקות למילוי הטופס</span><span data-lang="en">minutes to fill in the form</span></div>
+        <div class="stat"><b>1</b><span data-lang="he">טופס אחד לכל הגופים</span><span data-lang="en">form for every provider</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 data-lang="he">למי מתאים השירות?</h2><h2 data-lang="en">Who is it for?</h2>
+      <p class="sub" data-lang="he">לכל מי שעובר דירה ולא רוצה לבזבז ימים על בירוקרטיה.</p>
+      <p class="sub" data-lang="en">Anyone moving home who doesn't want to lose days to bureaucracy.</p>
+      <div class="grid">
+        <div class="card"><div class="icon" aria-hidden="true">🏠</div>
+          <h3 data-lang="he">דיירים — שוכרים וקונים</h3><h3 data-lang="en">Tenants and buyers</h3>
+          <p data-lang="he">נכנסים לדירה בראש שקט, בלי לרדוף אחרי העירייה וחברת החשמל.</p>
+          <p data-lang="en">Move in with peace of mind — no chasing the municipality or the electric company.</p></div>
+        <div class="card"><div class="icon" aria-hidden="true">🔑</div>
+          <h3 data-lang="he">בעלי דירות — משכירים ומוכרים</h3><h3 data-lang="en">Landlords and sellers</h3>
+          <p data-lang="he">מוודאים שכל החשבונות הועברו ושלא נשארים חובות על שמכם.</p>
+          <p data-lang="en">Make sure every account is transferred and no debts stay in your name.</p></div>
+        <div class="card"><div class="icon" aria-hidden="true">💼</div>
+          <h3 data-lang="he">מתווכים וחברות ניהול</h3><h3 data-lang="en">Agents and property managers</h3>
+          <p data-lang="he">שירות פרימיום ללקוחות שלכם — וחיסכון בזמן יקר לכם.</p>
+          <p data-lang="en">A premium service for your clients — and precious time saved for you.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <h2 data-lang="he">איך זה עובד? 3 צעדים</h2><h2 data-lang="en">How it works — 3 steps</h2>
+      <p class="sub" data-lang="he">ממלאים פעם אחת — ואנחנו עושים את השאר.</p>
+      <p class="sub" data-lang="en">Fill it in once — we handle the rest.</p>
+      <div class="grid">
+        <div class="card"><div class="num">1</div>
+          <h3 data-lang="he">מזינים פרטים בטופס חכם</h3><h3 data-lang="en">Fill in one smart form</h3>
+          <p data-lang="he">פרטי הנכס והמוטבים מוזנים פעם אחת, והמערכת משייכת כל נתון לגוף הרלוונטי.</p>
+          <p data-lang="en">Enter the property and account details once; the system routes each detail to the right provider.</p></div>
+        <div class="card"><div class="num">2</div>
+          <h3 data-lang="he">אנחנו מבצעים את העבודה</h3><h3 data-lang="en">We do the work</h3>
+          <p data-lang="he">העברת חשבונות החשמל, המים, הגז והארנונה מול הספקים והרשויות — עם עדכונים לאורך הדרך.</p>
+          <p data-lang="en">We transfer electricity, water, gas and municipal tax with the providers and authorities — keeping you updated.</p></div>
+        <div class="card"><div class="num">3</div>
+          <h3 data-lang="he">נכנסים לדירה בראש שקט</h3><h3 data-lang="en">Move in stress-free</h3>
+          <p data-lang="he">מקבלים אישור מרוכז על כל הפעולות שבוצעו — וכל התשתיות כבר רשומות על שמכם.</p>
+          <p data-lang="en">Get one confirmation for everything done — every utility is already in your name.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="wrap">
+      <h2 data-lang="he">השירותים שלנו</h2><h2 data-lang="en">Our services</h2>
+      <p class="sub" data-lang="he">כל הבירוקרטיה של מעבר דירה — במקום אחד, מכל מכשיר.</p>
+      <p class="sub" data-lang="en">All the bureaucracy of moving home — in one place, from any device.</p>
+      <div class="grid">
+        <div class="card"><div class="icon" aria-hidden="true">⚡</div>
+          <h3 data-lang="he">העברת חשבונות</h3><h3 data-lang="en">Utility transfers</h3>
+          <p data-lang="he">חשמל, מים, גז וארנונה — בלי להוריד, להדפיס, לסרוק ולשלוח טפסים.</p>
+          <p data-lang="en">Electricity, water, gas and municipal tax — no downloading, printing, scanning or faxing forms.</p></div>
+        <div class="card"><div class="icon" aria-hidden="true">📬</div>
+          <h3 data-lang="he">שינוי כתובת</h3><h3 data-lang="en">Change of address</h3>
+          <p data-lang="he">עדכון הכתובת מול החברות ונותני השירות שלכם בלחיצת כפתור.</p>
+          <p data-lang="en">Update your address with your companies and service providers in one click.</p></div>
+        <div class="card"><div class="icon" aria-hidden="true">🧾</div>
+          <h3 data-lang="he">שירותים נלווים</h3><h3 data-lang="en">Additional services</h3>
+          <p data-lang="he">הסדרי תשלום וגמר חשבון, תו חניה ועוד — כל כאב הראש של מעבר דירה.</p>
+          <p data-lang="en">Final bills, payment arrangements, parking permits and more — all the hassle of moving.</p></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="alt">
+    <div class="wrap">
+      <div class="product">
+        <div>
+          <h3 data-lang="he">חדש: Hoze AI — חוזה שכירות חכם</h3><h3 data-lang="en">New: Hoze AI — smart lease agreements</h3>
+          <p data-lang="he">יוצרים חוזה שכירות חכם בעברית תוך דקות, עם העוזר החכם של מה זה קל.</p>
+          <p data-lang="en">Create a smart Israeli lease agreement in minutes with MaZeKal's AI assistant.</p>
+          <a class="btn ghost" href="https://hozeai.mazekal.co.il"><span data-lang="he">ל-Hoze AI</span><span data-lang="en">Go to Hoze AI</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <div>
+      <strong data-lang="he">מה זה קל</strong><strong data-lang="en">MaZeKal</strong> ·
+      <a href="https://mazekal.co.il">mazekal.co.il</a> ·
+      <a href="mailto:support@mazekal.co.il">support@mazekal.co.il</a>
+    </div>
+    <div>
+      <span data-lang="he">פרויקט נוסף:</span><span data-lang="en">Also by us:</span>
+      <a href="https://clicklaw.co.il">ClickLaw</a>
+    </div>
+  </div>
+</footer>
+
+<script>
+  (function () {
+    var root = document.documentElement;
+    function apply(lang) {
+      root.lang = lang;
+      root.dir = lang === "he" ? "rtl" : "ltr";
+      document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+        b.setAttribute("aria-pressed", String(b.getAttribute("data-set-lang") === lang));
+      });
+      try { localStorage.setItem("lang", lang); } catch (e) {}
+    }
+    var initial = "he";
+    try {
+      var q = new URLSearchParams(location.search).get("lang");
+      initial = q === "en" || q === "he" ? q : (localStorage.getItem("lang") || "he");
+    } catch (e) {}
+    apply(initial === "en" ? "en" : "he");
+    document.querySelectorAll("[data-set-lang]").forEach(function (b) {
+      b.addEventListener("click", function () { apply(b.getAttribute("data-set-lang")); });
+    });
+  })();
+</script>
+</body>
+</html>
